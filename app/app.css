@@ -59,7 +59,10 @@ form {
         @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200 p-4 rounded-2xl;
     }
     .primary-button {
-        @apply primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full;
+        @apply primary-gradient text-white rounded-full px-4 py-3 cursor-pointer;
+    }
+    .white-button {
+        @apply bg-white text-black rounded-full px-4 py-2 cursor-pointer;
     }
     .resume-nav {
         @apply flex flex-row justify-between items-center p-4 border-b border-gray-200;
@@ -71,7 +74,7 @@ form {
         }
     }
     .back-button {
-        @apply flex flex-row items-center gap-2 border border-gray-200 rounded-lg p-2 shadow-sm;
+        @apply inline-flex items-center justify-center gap-2 bg-white rounded-full;
     }
     .auth-button {
         @apply primary-gradient rounded-full py-3 sm:py-4 px-6 sm:px-8 cursor-pointer w-full max-w-[600px] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-white;
@@ -116,10 +119,64 @@ form {
     .uploader-selected-file {
         @apply flex items-center justify-between p-3 bg-gray-50 rounded-2xl;
     }
+    
+    .animate-fadeIn {
+        animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .animate-appear-scale{
+        animation: appear-scale Linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+    }
+
+    .animate-appear-transform{
+        animation: appear-transform Linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 20%;
+    }
+
+    .animate-appear-clip-path{
+        animation: appear-clip-path Linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 20%;
+    }
+
+    .animate-fade-in-delay-2 {
+        opacity:0;
+        animation: fadeIn 0.7s ease-out 0.4s forwards;
+    }
+
+    .animate-blink {
+        animation: blink 1s infinite;
+    }
+
+    .scroll-indicator {
+        animation: fade-in 0.7s ease-out forwards, 
+                    float 1.5s ease-in-out infinite;
+    }
+
+    
+    
 }
 
 @utility bg-gradient {
     background: linear-gradient(to bottom, #f0f4ff 60%, #fa7185cc);
+}
+
+@utility bg-gradient-two{
+    @apply bg-gradient-to-r from-blue-600/10 to-purple-600/10 
+}
+@utility bg-gradient-three{
+    @apply bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50
+}
+
+@utility button-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600
+}
+
+@utility button-hover{
+    @apply hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200
 }
 
 @utility text-gradient {
@@ -131,13 +188,11 @@ form {
 }
 
 @utility primary-gradient {
-    background: linear-gradient(to bottom, #8e98ff, #606beb);
-    box-shadow: 0px 74px 21px 0px #6678ef00;
+  background: linear-gradient(to right, #2563eb, #7c3aed); /* blue-600 → purple-600 */
+  box-shadow: 0px 8px 20px rgba(124, 58, 237, 0.35);
+  transition: all 0.3s ease-in-out;
 }
 
-@utility primary-gradient-hover {
-    background: linear-gradient(to bottom, #717dff, #4957eb);
-}
 
 @utility inset-shadow {
     box-shadow: inset 0 0 12px 0 rgba(36, 99, 235, 0.2);
@@ -145,10 +200,78 @@ form {
 }
 
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appear-scale {
     from {
         opacity: 0;
+        scale: 0.5;
     }
-    to {
+    to{
         opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes appear-transform {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes appear-clip-path {
+    from {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+    }
+    to{
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+@keyframes typingfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+ @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+}
+
+@keyframes disappear-scroll {
+    from {
+        opacity: 100;
+    }
+    to{
+        opacity: 0;
     }
 }
