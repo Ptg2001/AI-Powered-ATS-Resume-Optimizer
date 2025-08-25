@@ -29,9 +29,6 @@ const Navbar = () => {
                 ) : (
                     <>
                         <Link to="/auth" className="primary-button w-fit text-xs sm:text-sm md:text-base px-3 sm:px-4 py-2 button-hover animate-fade-in-delay-2">
-                            Sign In
-                        </Link>
-                        <Link to="/auth" className="primary-button w-fit text-xs sm:text-sm md:text-base px-3 sm:px-4 py-2 button-hover animate-fade-in-delay-2">
                             Get Started
                         </Link>
                     </>
