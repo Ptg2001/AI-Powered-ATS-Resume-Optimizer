@@ -139,15 +139,8 @@ const ResumeDetail = () => {
       <Navbar />
       <div className="main-section">
         {/* Header */}
-        <div className="w-full max-w-6xl mx-auto">
-          <div className="flex items-center gap-4 mb-8">
-            <Link to="/" className="back-button">
-              <img src="/icons/back.svg" alt="Back" className="w-4 h-4" />
-              <span>Back to Resumes</span>
-            </Link>
-          </div>
-
-                     {/* Resume Info */}
+        <div className="w-full max-w-6xl mx-auto">        
+             {/* Resume Info */}
            <div className="bg-white rounded-2xl p-6 mb-8 shadow-sm">
              
              {/* Overall Score Explanation */}
@@ -251,7 +244,7 @@ const ResumeDetail = () => {
                </div>
              </div>
                         {/* Resume Header */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 animate-appear-clip-path">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
@@ -309,7 +302,7 @@ const ResumeDetail = () => {
           {/* Feedback Sections */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* ATS Compatibility */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-appear-transform">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
@@ -389,7 +382,7 @@ const ResumeDetail = () => {
             </div>
 
             {/* Content Quality */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-appear-transform">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
@@ -442,7 +435,7 @@ const ResumeDetail = () => {
             </div>
 
             {/* Structure */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-appear-transform">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -476,7 +469,7 @@ const ResumeDetail = () => {
             </div>
 
             {/* Skills */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-appear-transform">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
@@ -511,12 +504,16 @@ const ResumeDetail = () => {
           </div>
 
           {/* Job Description */}
-          <div className="bg-white rounded-2xl p-6 mt-8 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 mt-8 shadow-sm animate-appear-clip-path">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Job Description</h2>
             <div className="bg-gray-50 rounded-lg p-4">
               <p className="text-sm text-gray-700 whitespace-pre-wrap">{resume.jobDescription}</p>
             </div>
           </div>
+          <Link to="/" className="back-button button-hover px-6 py-5 md:px-10 md:py-5 lg:px-12 lg:py-6 sm:px-10 sm:py-10 self-start mt-5">
+              <img src="/icons/back.svg" alt="Back" className="w-4 h-4" />
+              <span>Back to Resumes</span>
+          </Link>
         </div>
       </div>
     </main>

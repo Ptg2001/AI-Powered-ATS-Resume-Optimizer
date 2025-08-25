@@ -69,12 +69,15 @@ const Auth = () => {
   };
 
   return (
-    <main className="bg-[url('/images/bg-auth.svg')] bg-cover min-h-screen flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl w-full max-w-sm sm:max-w-md">
+    <main className="flex flex-col items-center justify-center p-4 min-h-screen bg-cover bg-gradient-two opacity-0 animate-fadeIn">
+      <Link to="/" className="mb-6 sm:mb-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gradient tracking-wide">
+          RESUMIND
+        </h1>
+      </Link>
+      
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-10 sm:p-8 shadow-2xl w-full max-w-sm sm:max-w-md">
         <div className="text-center mb-6 sm:mb-8">
-          <Link to="/" className="inline-block mb-3 sm:mb-4">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gradient">RESUMIND</h1>
-          </Link>
           <h2 className="text-xl sm:text-2xl font-semibold text-dark-200">
             {isLogin ? 'Welcome Back' : 'Create Account'}
           </h2>
@@ -83,7 +86,7 @@ const Auth = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+        <form onSubmit={handleSubmit} className="opacity-0 animate-fadeIn">
           {!isLogin && (
             <div className="form-div">
               <label htmlFor="name" className="text-sm font-medium">
@@ -155,7 +158,7 @@ const Auth = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="auth-button w-full disabled:opacity-50 disabled:cursor-not-allowed"
+            className="primary-button w-full text-xs sm:text-sm md:text-base px-3 sm:px-4 py-3 button-hover "
           >
             {isLoading ? 'Processing...' : (isLogin ? 'Sign In' : 'Create Account')}
           </button>
