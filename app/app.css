@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+    --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --color-dark-200: #475467;
+    --color-light-blue-100: #c1d3f81a;
+    --color-light-blue-200: #a7bff14d;
+
+    --color-badge-green: #d5faf1;
+    --color-badge-red: #f9e3e2;
+    --color-badge-yellow: #fceed8;
+
+    --color-badge-green-text: #254d4a;
+    --color-badge-red-text: #752522;
+    --color-badge-yellow-text: #73321b;
+}
+
+html,
+body {
+    @apply bg-white;
+}
+
+main {
+    @apply min-h-screen pt-4 sm:pt-6 md:pt-8 lg:pt-10;
+}
+
+h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-gradient leading-tight font-semibold;
+}
+
+h2 {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl text-dark-200;
+}
+
+label {
+    @apply text-dark-200 text-sm sm:text-base;
+}
+
+input {
+    @apply w-full p-3 sm:p-4 inset-shadow rounded-xl sm:rounded-2xl focus:outline-none bg-white text-sm sm:text-base;
+}
+
+textarea {
+    @apply w-full p-3 sm:p-4 inset-shadow rounded-xl sm:rounded-2xl focus:outline-none bg-white text-sm sm:text-base;
+}
+
+form {
+    @apply flex flex-col items-start gap-4 sm:gap-6 md:gap-8 w-full;
+}
+
+@layer components {
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
+    }
+    .gradient-border {
+        @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200 p-4 rounded-2xl;
+    }
+    .primary-button {
+        @apply primary-gradient text-white rounded-full px-4 py-3 cursor-pointer;
+    }
+    .white-button {
+        @apply bg-white text-black rounded-full px-4 py-2 cursor-pointer;
+    }
+    .resume-nav {
+        @apply flex flex-row justify-between items-center p-4 border-b border-gray-200;
+    }
+    .resume-summary {
+        @apply flex flex-row items-center justify-center p-4 gap-4;
+        .category {
+            @apply flex flex-row gap-2 items-center bg-gray-50 rounded-2xl p-4 w-full justify-between;
+        }
+    }
+    .back-button {
+        @apply inline-flex items-center justify-center gap-2 bg-white rounded-full;
+    }
+    .auth-button {
+        @apply primary-gradient rounded-full py-3 sm:py-4 px-6 sm:px-8 cursor-pointer w-full max-w-[600px] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-white;
+    }
+    .main-section {
+        @apply flex flex-col items-center gap-4 sm:gap-6 md:gap-8 pt-6 sm:pt-8 md:pt-10 lg:pt-12 px-4 sm:px-6 md:px-8 lg:px-15 pb-5;
+    }
+    .page-heading {
+        @apply flex flex-col items-center gap-4 sm:gap-6 md:gap-8 max-w-4xl text-center;
+    }
+    .resumes-section {
+        @apply flex flex-wrap gap-4 sm:gap-6 items-start justify-center sm:justify-evenly w-full max-w-[1850px] px-4 sm:px-6 md:px-8;
+    }
+
+    .resume-card {
+        @apply flex flex-col gap-4 sm:gap-6 md:gap-8 h-[400px] sm:h-[480px] md:h-[520px] lg:h-[560px] w-full max-w-[350px] sm:w-[350px] lg:w-[430px] xl:w-[490px] bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4;
+    }
+
+    .resume-card-header {
+        @apply flex flex-row gap-2 justify-between min-h-[80px] sm:min-h-[90px] md:min-h-[110px] max-sm:flex-col items-center max-md:justify-center max-md:items-center;
+    }
+
+    .feedback-section {
+        @apply flex flex-col gap-8 w-1/2 px-8 max-lg:w-full py-6;
+    }
+
+    .navbar {
+        @apply flex flex-row justify-between items-center bg-white rounded-full p-3 sm:p-4 w-full px-4 sm:px-6 md:px-8 lg:px-10 max-w-[1200px] mx-auto;
+    }
+
+    .score-badge {
+        @apply flex flex-row items-center justify-center py-1 px-2 gap-4 rounded-[96px];
+    }
+
+    .form-div {
+        @apply flex flex-col gap-2 w-full items-start;
+    }
+
+    .uplader-drag-area {
+        @apply relative p-8 text-center transition-all duration-700 cursor-pointer bg-white rounded-2xl min-h-[208px];
+    }
+    .uploader-selected-file {
+        @apply flex items-center justify-between p-3 bg-gray-50 rounded-2xl;
+    }
+    
+    .animate-fadeIn {
+        animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .animate-appear-scale{
+        animation: appear-scale Linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+    }
+
+    .animate-appear-transform{
+        animation: appear-transform Linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 20%;
+    }
+
+    .animate-appear-clip-path{
+        animation: appear-clip-path Linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 20%;
+    }
+
+    .animate-fade-in-delay-2 {
+        opacity:0;
+        animation: fadeIn 0.7s ease-out 0.4s forwards;
+    }
+
+    .animate-blink {
+        animation: blink 1s infinite;
+    }
+
+    .scroll-indicator {
+        animation: fade-in 0.7s ease-out forwards, 
+                    float 1.5s ease-in-out infinite;
+    }
+
+    
+    
+}
+
+@utility bg-gradient {
+    background: linear-gradient(to bottom, #f0f4ff 60%, #fa7185cc);
+}
+
+@utility bg-gradient-two{
+    @apply bg-gradient-to-r from-blue-600/10 to-purple-600/10 
+}
+@utility bg-gradient-three{
+    @apply bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50
+}
+
+@utility button-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600
+}
+
+@utility button-hover{
+    @apply hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200
+}
+
+@utility text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
+}
+
+@utility gradient-hover {
+    @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200;
+}
+
+@utility primary-gradient {
+  background: linear-gradient(to right, #2563eb, #7c3aed); /* blue-600 → purple-600 */
+  box-shadow: 0px 8px 20px rgba(124, 58, 237, 0.35);
+  transition: all 0.3s ease-in-out;
+}
+
+
+@utility inset-shadow {
+    box-shadow: inset 0 0 12px 0 rgba(36, 99, 235, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appear-scale {
+    from {
+        opacity: 0;
+        scale: 0.5;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes appear-transform {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes appear-clip-path {
+    from {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+    }
+    to{
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+@keyframes typingfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+ @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+}
+
+@keyframes disappear-scroll {
+    from {
+        opacity: 100;
+    }
+    to{
+        opacity: 0;
+    }
+}
