@@ -19,4 +19,7 @@ export default [
     route('/api/resume/improve','routes/api.resume.improve.tsx'),
     route('/api/resume/reanalyze','routes/api.resume.reanalyze.tsx'),
     route('/api/test/gemini','routes/api.test.gemini.tsx'),
+    route('/api/chatbot','routes/api.chatbot.tsx'),
+    route('/api/health','routes/api.health.tsx'),
+    route('/api/test-mongo','routes/api.test-mongo.tsx'),
 ] satisfies RouteConfig;

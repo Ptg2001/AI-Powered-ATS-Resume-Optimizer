@@ -6,6 +6,8 @@ import ResumeCard from "~/components/ResumeCard";
 import { Link } from "react-router";
 import GradientTyping from "~/components/GradientTyping";
 import { ArrowDown } from "lucide-react";
+import Chatbot from "~/components/Chatbot";
+import ChatbotToggle from "~/components/ChatbotToggle";
 
 
 interface Resume {
@@ -30,6 +32,7 @@ export default function Home() {
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated && token) {
@@ -138,6 +141,8 @@ export default function Home() {
     return (
       <main className="bg-gradient-two min-h-screen">
         <Navbar />
+        <ChatbotToggle onClick={() => setIsChatbotOpen(true)} isOpen={isChatbotOpen} />
+        <Chatbot isOpen={isChatbotOpen} onClose={() => setIsChatbotOpen(false)} />
         <section className="relative overflow-hidden mt-15 animate-fade-in-delay-2">
           <div className="absolute inset-0 bg-gradient-two animate-fade-in-delay-2"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
@@ -210,6 +215,8 @@ export default function Home() {
   return (
     <main className="bg-gradient-two min-h-screen">
       <Navbar />
+      <ChatbotToggle onClick={() => setIsChatbotOpen(true)} isOpen={isChatbotOpen} />
+      <Chatbot isOpen={isChatbotOpen} onClose={() => setIsChatbotOpen(false)} />
       {/* Hero Section */}
       <section className="relative overflow-hidden mt-15 animate-fade-in-delay-2">
         <div className="absolute inset-0 bg-gradient-two animate-fade-in-delay-2"></div>

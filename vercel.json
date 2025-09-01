@@ -4,6 +4,10 @@
   "installCommand": "npm install",
   "rewrites": [
     {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
@@ -26,5 +30,10 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "app/routes/api/**/*.tsx": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
