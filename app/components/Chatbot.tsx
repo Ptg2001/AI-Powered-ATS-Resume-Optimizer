@@ -149,7 +149,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 w-96 h-[600px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col">
+    <div className="fixed inset-x-0 bottom-0 right-0 z-50 w-full sm:w-[28rem] md:w-[30rem] lg:w-[32rem] h-[70vh] sm:h-[600px] md:h-[650px] bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl border border-gray-200 flex flex-col mx-auto sm:mx-0 sm:bottom-4 sm:right-4 safe-areas">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
         <div className="flex items-center space-x-3">
@@ -159,8 +159,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
             </svg>
           </div>
           <div>
-            <h3 className="font-semibold">Resumind AI Assistant</h3>
-            <p className="text-sm text-blue-100">Resume Optimization Expert</p>
+            <h3 className="font-semibold text-sm sm:text-base">Resumind AI Assistant</h3>
+            <p className="text-xs sm:text-sm text-blue-100">Resume Optimization Expert</p>
           </div>
         </div>
         <button
@@ -174,14 +174,14 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
         {messages.map((message) => (
           <div
             key={message.id}
             className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[80%] p-3 rounded-2xl ${
+              className={`max-w-[85%] sm:max-w-[80%] p-3 rounded-2xl ${
                 message.sender === 'user'
                   ? 'bg-blue-600 text-white'
                   : 'bg-gray-100 text-gray-800'
@@ -190,7 +190,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
               <div className="whitespace-pre-wrap text-sm leading-relaxed">
                 {message.text}
               </div>
-              <div className={`text-xs mt-2 ${
+              <div className={`text-[10px] sm:text-xs mt-2 ${
                 message.sender === 'user' ? 'text-blue-100' : 'text-gray-500'
               }`}>
                 {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -219,14 +219,14 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
 
       {/* Quick Actions */}
       {messages.length === 1 && (
-        <div className="px-4 pb-2">
-          <p className="text-xs text-gray-500 mb-2">Quick questions:</p>
+        <div className="px-3 sm:px-4 pb-2">
+          <p className="text-[10px] sm:text-xs text-gray-500 mb-2">Quick questions:</p>
           <div className="flex flex-wrap gap-2">
             {quickActions.map((action, index) => (
               <button
                 key={index}
                 onClick={() => handleQuickAction(action)}
-                className="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"
+                className="text-[10px] sm:text-xs bg-blue-50 text-blue-600 px-2 sm:px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"
               >
                 {action}
               </button>
@@ -236,8 +236,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
       )}
 
       {/* Input */}
-      <div className="p-4 border-t border-gray-200">
-        <div className="flex space-x-2">
+      <div className="p-3 sm:p-4 border-t border-gray-200">
+        <div className="flex gap-2">
           <input
             ref={inputRef}
             type="text"
@@ -245,13 +245,14 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
             onChange={(e) => setInputText(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Ask me about resume optimization..."
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="flex-1 px-3 sm:px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
             disabled={isLoading}
           />
           <button
             onClick={handleSendMessage}
             disabled={!inputText.trim() || isLoading}
             className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            aria-label="Send message"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

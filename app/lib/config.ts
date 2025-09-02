@@ -1,7 +1,17 @@
+import 'dotenv/config';
 export const config = {
   mongodb: {
     uri: process.env.MONGODB_URI || "mongodb+srv://piyushhole:Piyushhole2001@ecom.neu3z5n.mongodb.net/resumeAI?retryWrites=true&w=majority&appName=resumeAI&authSource=admin&directConnection=false",
     enabled: true,
+  },
+  oauth: {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+      // Do NOT default to localhost here; let routes compute from request origin if empty.
+      redirectUri: process.env.GOOGLE_REDIRECT_URI || '',
+      scope: 'openid email profile',
+    },
   },
   jwt: {
     secret: process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-in-production',

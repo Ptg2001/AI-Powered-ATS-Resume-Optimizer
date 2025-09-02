@@ -11,12 +11,12 @@ const ChatbotToggle: React.FC<ChatbotToggleProps> = ({ onClick, isOpen }) => {
   return (
     <button
       onClick={onClick}
-      className="fixed bottom-4 right-4 z-40 w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center group"
+      className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center group"
       aria-label="Open AI Assistant"
     >
       {/* Chat icon */}
       <svg 
-        className="w-8 h-8 transition-transform group-hover:scale-110" 
+        className="w-7 h-7 sm:w-8 sm:h-8 transition-transform group-hover:scale-110" 
         fill="none" 
         stroke="currentColor" 
         viewBox="0 0 24 24"
@@ -35,7 +35,7 @@ const ChatbotToggle: React.FC<ChatbotToggleProps> = ({ onClick, isOpen }) => {
       </div>
       
       {/* Tooltip */}
-      <div className="absolute right-20 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+      <div className="hidden sm:block absolute right-20 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
         AI Resume Assistant
         <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-900 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
       </div>

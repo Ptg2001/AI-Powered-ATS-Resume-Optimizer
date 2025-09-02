@@ -68,6 +68,21 @@ const Auth = () => {
     }
   };
 
+  // Handle redirect back from Google OAuth
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const hasGoogle = params.get('googleLogin');
+    const token = params.get('token');
+    const name = params.get('name');
+    const email = params.get('email');
+    if (hasGoogle && token) {
+      // Clear params from URL after processing
+      window.history.replaceState({}, document.title, window.location.pathname);
+      login(token, { id: 'google', name: name || 'Google User', email: email || '' } as any);
+      navigate('/');
+    }
+  }, [login, navigate]);
+
   return (
     <main className="flex flex-col items-center justify-center p-4 min-h-screen bg-cover bg-gradient-two opacity-0 animate-fadeIn">
       <Link to="/" className="mb-6 sm:mb-10">
@@ -164,6 +179,26 @@ const Auth = () => {
           </button>
         </form>
 
+        {/* Or divider */}
+        <div className="my-4 sm:my-6 flex items-center">
+          <div className="flex-1 h-px bg-gray-200" />
+          <span className="px-3 text-gray-500 text-xs sm:text-sm">or</span>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+
+        {/* Google Sign-In */}
+        <div>
+          <a href="/api/auth/google" className="w-full inline-flex items-center justify-center gap-2 border border-gray-300 rounded-full px-4 py-3 text-sm sm:text-base hover:bg-gray-50 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-5 h-5">
+              <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12 s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C33.26,6.053,28.884,4,24,4C12.955,4,4,12.955,4,24 s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+              <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,16.131,18.961,13,24,13c3.059,0,5.842,1.154,7.961,3.039 l5.657-5.657C33.26,6.053,28.884,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+              <path fill="#4CAF50" d="M24,44c4.798,0,9.183-1.836,12.522-4.826l-5.786-4.882C28.648,35.554,26.429,36,24,36 c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+              <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.106,5.574 c0.001-0.001,0.002-0.001,0.003-0.002l5.786,4.882C36.671,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+            </svg>
+            Continue with Google
+          </a>
+        </div>
+
         <div className="mt-4 sm:mt-6 text-center">
           <p className="text-gray-600 text-sm sm:text-base">
             {isLogin ? "Don't have an account? " : "Already have an account? "}
@@ -177,6 +212,12 @@ const Auth = () => {
               {isLogin ? 'Sign up' : 'Sign in'}
             </button>
           </p>
+        </div>
+
+        <div className="mt-3 sm:mt-4 text-center">
+          <Link to="/" className="text-gray-600 hover:text-gray-800 underline text-sm sm:text-base">
+            Back to Home
+          </Link>
         </div>
 
         {error && (

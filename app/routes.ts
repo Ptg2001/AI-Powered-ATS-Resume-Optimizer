@@ -12,6 +12,8 @@ export default [
     route('/api/auth/login','routes/api.auth.login.tsx'),
     route('/api/auth/signup','routes/api.auth.signup.tsx'),
     route('/api/auth/verify','routes/api.auth.verify.tsx'),
+    route('/api/auth/google','routes/api.auth.google.tsx'),
+    route('/api/auth/google/callback','routes/api.auth.google.callback.tsx'),
     route('/api/resume/upload','routes/api.resume.upload.tsx'),
     route('/api/resume/list','routes/api.resume.list.tsx'),
     route('/api/resume/:id','routes/api.resume.$id.tsx'),
