@@ -5,7 +5,7 @@ import Navbar from "~/components/Navbar";
 import ResumeCard from "~/components/ResumeCard";
 import { Link } from "react-router";
 import GradientTyping from "~/components/GradientTyping";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown,ScanText,BadgeCheck,Wrench,CircleQuestionMark,Upload,ClipboardPaste,Target  } from "lucide-react";
 import Chatbot from "~/components/Chatbot";
 import ChatbotToggle from "~/components/ChatbotToggle";
 
@@ -167,38 +167,68 @@ export default function Home() {
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <h3 className="text-lg font-semibold">Accurate Parsing</h3>
-              <p className="text-gray-600 mt-2">Advanced PDF/DOCX parsing with OCR fallback recovers text from complex resumes.</p>
+
+            <div className="home-card animate-fadeIn">
+              <div className="home-card-header">
+                <ScanText className="w-12 h-12" />
+                <h3 className="home-card-title">Accurate Parsing</h3>
+              </div>
+              <p className="home-card-text">
+                Advanced PDF/DOCX parsing with OCR fallback recovers text from complex resumes.
+              </p>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <h3 className="text-lg font-semibold">Job‑Aware Scoring</h3>
-              <p className="text-gray-600 mt-2">Blends AI judgment with real keyword match and structure checks for realistic scores.</p>
+
+            <div className="home-card animate-fadeIn">
+              <div className="home-card-header">
+                <BadgeCheck className="w-12 h-12"/>
+                <h3 className="home-card-title">Job‑Aware Scoring</h3>
+              </div>
+                <p className="home-card-text">
+                  Blends AI judgment with real keyword match and structure checks for realistic scores.
+                </p>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <h3 className="text-lg font-semibold">Actionable Fixes</h3>
-              <p className="text-gray-600 mt-2">Concrete, prioritized suggestions to improve ATS pass rate and readability.</p>
+
+            <div className="home-card animate-fadeIn">
+              <div className="home-card-header">
+                <Wrench className="w-12 h-12"/>
+                <h3 className="home-card-title">Actionable Fixes</h3>
+              </div>
+              <p className="home-card-text">Concrete, prioritized suggestions to improve ATS pass rate and readability.</p>
             </div>
           </div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
-            <h2 className="text-2xl font-bold text-gray-900 text-center">How it works</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            <div className="flex gap-2 justify-center items-center mb-10">
+              <h2 className="text-black">How it works</h2>
+              <CircleQuestionMark className="w-10 h-10 text-dark-200" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">  
               <div className="p-4">
-                <div className="text-sm text-gray-500 mb-1">Step 1</div>
-                <div className="font-semibold">Upload your resume</div>
-                <p className="text-gray-600 mt-2">PDF or DOCX. We extract text precisely, including LaTeX exports.</p>
+                  <div className="text-sm text-gray-500 mb-4">Step 1</div>
+                  <div className="flex gap-2 flex-start items-center mb-4">
+                    <Upload className="w-10 h-10 text-blue-500" />
+                    <div className="font-semibold">Upload your resume</div>
+                  </div>
+                  <p className="text-gray-600 mt-2">PDF or DOCX. We extract text precisely, including LaTeX exports.</p>
               </div>
+
               <div className="p-4">
-                <div className="text-sm text-gray-500 mb-1">Step 2</div>
-                <div className="font-semibold">Paste a job description</div>
+                <div className="text-sm text-gray-500 mb-4">Step 2</div>
+                <div className="flex gap-2 flex-start items-center mb-4">
+                  <ClipboardPaste className="w-10 h-10 text-green-500" />
+                  <div className="font-semibold">Paste a job description</div>
+                </div>
                 <p className="text-gray-600 mt-2">We detect critical keywords and assess relevance and structure.</p>
               </div>
               <div className="p-4">
-                <div className="text-sm text-gray-500 mb-1">Step 3</div>
-                <div className="font-semibold">Get targeted fixes</div>
+                <div className="text-sm text-gray-500 mb-4">Step 3</div>
+                <div className="flex gap-2 flex-start items-center mb-4">
+                  <Target className="w-10 h-10 text-red-500" />
+                  <div className="font-semibold">Get targeted fixes</div>
+                </div>
                 <p className="text-gray-600 mt-2">Receive prioritized tips to raise your ATS score and pass rate.</p>
               </div>
             </div>
