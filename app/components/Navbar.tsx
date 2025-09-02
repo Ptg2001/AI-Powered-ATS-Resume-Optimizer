@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { useAuth } from "~/contexts/AuthContext";
 
+
 const Navbar = () => {
     const { user, isAuthenticated, logout } = useAuth();
 
@@ -10,7 +11,8 @@ const Navbar = () => {
 
     return (
         <nav className="navbar mx-auto">
-            <Link to="/">
+            <Link to="/" className="flex items-center gap-2">
+                <img src="/resumind-logo.jpg" alt="Resumind Logo" className="h-10 w-auto" />
                 <p className="text-lg sm:text-xl md:text-2xl font-bold text-gradient animate-fade-in-delay-2">RESUMIND</p>
             </Link>
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
