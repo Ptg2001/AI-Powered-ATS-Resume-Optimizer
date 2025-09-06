@@ -380,14 +380,16 @@ export default function Home() {
                 </div>
               </div>
             ) : resumes.length > 0 ? (
-              <div className="space-y-6">
-                {resumes.map((resume) => (
-                  <ResumeCard 
-                    key={resume.id} 
-                    resume={resume} 
-                    onDelete={handleDeleteResume}
-                  />
-                ))}
+              <div className="max-h-[600px] overflow-y-auto pr-2 scrollbar-thin">
+                <div className="space-y-6">
+                  {resumes.map((resume) => (
+                    <ResumeCard 
+                      key={resume.id} 
+                      resume={resume} 
+                      onDelete={handleDeleteResume}
+                    />
+                  ))}
+                </div>
               </div>
             ) : (
               <div className="flex justify-center items-center py-16">
