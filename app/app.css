@@ -119,7 +119,24 @@ form {
     .uploader-selected-file {
         @apply flex items-center justify-between p-3 bg-gray-50 rounded-2xl;
     }
-    
+
+    .home-card {
+        @apply flex flex-col gap-3 sm:gap-4 md:gap-6 w-full max-w-[350px] sm:w-[350px] lg:w-[430px] xl:w-[490px] rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-md hover:shadow-xl transition-all duration-300 bg-white;
+        height: auto; 
+    }
+
+    .home-card-header {
+        @apply flex flex-row gap-3 items-center;
+    }
+
+    .home-card-title {
+        @apply text-xl sm:text-2xl md:text-2xl font-semibold;
+    }
+
+    .home-card-text {
+        @apply text-dark-200 text-sm sm:text-base md:text-lg;
+    }
+
     .animate-fadeIn {
         animation: fadeIn 0.8s ease-out forwards;
     }
@@ -155,9 +172,6 @@ form {
         animation: fade-in 0.7s ease-out forwards, 
                     float 1.5s ease-in-out infinite;
     }
-
-    
-    
 }
 
 @utility bg-gradient {

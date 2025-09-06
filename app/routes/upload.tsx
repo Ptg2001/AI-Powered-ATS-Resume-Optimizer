@@ -315,31 +315,38 @@ const Upload = () => {
                         </div>
 
                         {/* Progress Bar */}
-                        {uploadState.isUploading && (
-                            <div className="w-full">
-                                <div className="flex justify-between text-sm text-gray-600 mb-2">
-                                    <span>
-                                        {uploadState.progress < 30 ? 'Extracting document text...' :
-                                         uploadState.progress < 70 ? 'AI analyzing resume...' :
-                                         uploadState.progress < 90 ? 'Processing results...' : 'Finalizing...'}
-                                    </span>
-                                    <span>{uploadState.progress}%</span>
-                                </div>
-                                <div className="w-full bg-gray-200 rounded-full h-2">
-                                    <div 
-                                        className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                                        style={{ width: `${uploadState.progress}%` }}
-                                    ></div>
-                                </div>
-                                <div className="mt-2 text-xs text-gray-500 text-center">
-                                    Real-time AI analysis powered by Gemini
-                                </div>
-                                <div className="mt-2 flex items-center justify-center gap-2 text-xs text-blue-600">
-                                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                                    <span>AI analyzing resume content...</span>
-                                </div>
+
+                    {uploadState.isUploading && (
+                    <div className="fixed top-0 left-0 w-screen h-screen z-50 flex flex-col items-center justify-center bg-black/30 backdrop-blur-xl">
+                            {/* Scanning Card */}
+                        <div className="relative w-80 h-[28rem] sm:w-[28rem] sm:h-[36rem] lg:w-[32rem] lg:h-[42rem] bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 mb-6 animate-[zoomIn_0.3s_ease-out] select-none cursor-default">
+                            <img
+                                src = "/images/resume-scan.gif"
+                                alt="Resume scanning"
+                                className="w-full h-full object-cover select-none pointer-events-none"
+                            />    
+
+                            {/* Progress % overlay */}
+                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-sm px-3 py-1 rounded-full">
+                                {uploadState.progress}%
                             </div>
-                        )}
+                        </div>
+
+                        {/* Status text directly under card, centered */}
+                        <div className="text-center text-white text-sm sm:text-base">
+                            {uploadState.progress < 30
+                                ? "Extracting document text..."
+                                : uploadState.progress < 70
+                                ? "AI analyzing resume..."
+                                : uploadState.progress < 90
+                                ? "Processing results..."
+                                : "Finalizing..."}
+                            <p className="text-xs text-gray-200 mt-1">
+                                Real-time AI analysis powered by Gemini
+                            </p>
+                        </div>
+                    </div>
+                    )}
 
                         {/* Error Message */}
                         {uploadState.error && (

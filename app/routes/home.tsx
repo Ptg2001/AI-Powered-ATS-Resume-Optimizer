@@ -5,9 +5,10 @@ import Navbar from "~/components/Navbar";
 import ResumeCard from "~/components/ResumeCard";
 import { Link } from "react-router";
 import GradientTyping from "~/components/GradientTyping";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown,ScanText,BadgeCheck,Wrench,CircleQuestionMark,Upload,ClipboardPaste,Target  } from "lucide-react";
 import Chatbot from "~/components/Chatbot";
 import ChatbotToggle from "~/components/ChatbotToggle";
+import SwipeEffect from "~/components/SwipeEffect";
 
 
 interface Resume {
@@ -146,59 +147,91 @@ export default function Home() {
         <section className="relative overflow-hidden mt-15 animate-fade-in-delay-2">
           <div className="absolute inset-0 bg-gradient-two animate-fade-in-delay-2"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mt-10">
-                Optimize your resume for real ATS screening
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed mt-10">
-                Resumind analyzes your resume like an ATS, extracts keywords from the job description, and gives actionable fixes so you get more callbacks.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-                <Link to="/auth" className="inline-flex items-center justify-center primary-button font-bold px-6 py-4">
-                  Sign in to Get Started
-                </Link>
-                <Link to="/upload" className="inline-flex items-center justify-center white-button font-bold px-6 py-4">
-                  Try the Analyzer
-                </Link>
-              </div>
-            </div>
+            <SwipeEffect />
           </div>
         </section>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+                <Link to="/auth" className="inline-flex items-center justify-center primary-button font-bold px-4 py-5 md:px-12 md:py-5 button-hover animate-fade-in-delay-2 w-[250px] sm:w-auto mx-auto sm:mx-0">
+                  Sign in to Get Started
+                </Link>
+                <Link to="/upload" className="inline-flex items-center justify-center white-button font-bold px-4 py-5 md:px-18 md:py-5 button-hover animate-fade-in-delay-2 w-[250px] sm:w-auto mx-auto sm:mx-0">
+                  Try the Analyzer
+                </Link>
+        </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {useScroll && (
+            <div 
+                className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer mt-8 scroll-indicator animate-disappear-scroll"
+            >
+                <span className="text-sm text-muted-foreground mb-2"> Scroll </span>
+                <ArrowDown className="h-5 w-5 text-black" />
+            </div>
+        )}
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <h3 className="text-lg font-semibold">Accurate Parsing</h3>
-              <p className="text-gray-600 mt-2">Advanced PDF/DOCX parsing with OCR fallback recovers text from complex resumes.</p>
+
+            <div className="home-card animate-fadeIn mx-auto sm:mx-0 animate-appear-clip-path">
+              <div className="home-card-header">
+                <ScanText className="w-12 h-12" />
+                <h3 className="home-card-title">Accurate Parsing</h3>
+              </div>
+              <p className="home-card-text">
+                Advanced PDF/DOCX parsing with OCR fallback recovers text from complex resumes.
+              </p>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <h3 className="text-lg font-semibold">Job‑Aware Scoring</h3>
-              <p className="text-gray-600 mt-2">Blends AI judgment with real keyword match and structure checks for realistic scores.</p>
+
+            <div className="home-card animate-fadeIn mx-auto sm:mx-0 animate-appear-clip-path">
+              <div className="home-card-header">
+                <BadgeCheck className="w-12 h-12"/>
+                <h3 className="home-card-title">Job‑Aware Scoring</h3>
+              </div>
+                <p className="home-card-text">
+                  Blends AI judgment with real keyword match and structure checks for realistic scores.
+                </p>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <h3 className="text-lg font-semibold">Actionable Fixes</h3>
-              <p className="text-gray-600 mt-2">Concrete, prioritized suggestions to improve ATS pass rate and readability.</p>
+
+            <div className="home-card animate-fadeIn mx-auto sm:mx-0 animate-appear-clip-path">
+              <div className="home-card-header">
+                <Wrench className="w-12 h-12"/>
+                <h3 className="home-card-title">Actionable Fixes</h3>
+              </div>
+              <p className="home-card-text">Concrete, prioritized suggestions to improve ATS pass rate and readability.</p>
             </div>
           </div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
-            <h2 className="text-2xl font-bold text-gray-900 text-center">How it works</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 animate-appear-scale">
+            <div className="flex gap-2 justify-center items-center mb-10">
+              <h2 className="text-black">How it works</h2>
+              <CircleQuestionMark className="w-10 h-10 text-dark-200" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">  
               <div className="p-4">
-                <div className="text-sm text-gray-500 mb-1">Step 1</div>
-                <div className="font-semibold">Upload your resume</div>
-                <p className="text-gray-600 mt-2">PDF or DOCX. We extract text precisely, including LaTeX exports.</p>
+                  <div className="text-sm text-gray-500 mb-4">Step 1</div>
+                  <div className="flex gap-2 flex-start items-center mb-4">
+                    <Upload className="w-10 h-10 text-blue-500" />
+                    <div className="font-semibold">Upload your resume</div>
+                  </div>
+                  <p className="text-gray-600 mt-2">PDF or DOCX. We extract text precisely, including LaTeX exports.</p>
               </div>
+
               <div className="p-4">
-                <div className="text-sm text-gray-500 mb-1">Step 2</div>
-                <div className="font-semibold">Paste a job description</div>
+                <div className="text-sm text-gray-500 mb-4">Step 2</div>
+                <div className="flex gap-2 flex-start items-center mb-4">
+                  <ClipboardPaste className="w-10 h-10 text-green-500" />
+                  <div className="font-semibold">Paste a job description</div>
+                </div>
                 <p className="text-gray-600 mt-2">We detect critical keywords and assess relevance and structure.</p>
               </div>
               <div className="p-4">
-                <div className="text-sm text-gray-500 mb-1">Step 3</div>
-                <div className="font-semibold">Get targeted fixes</div>
+                <div className="text-sm text-gray-500 mb-4">Step 3</div>
+                <div className="flex gap-2 flex-start items-center mb-4">
+                  <Target className="w-10 h-10 text-red-500" />
+                  <div className="font-semibold">Get targeted fixes</div>
+                </div>
                 <p className="text-gray-600 mt-2">Receive prioritized tips to raise your ATS score and pass rate.</p>
               </div>
             </div>
@@ -234,7 +267,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-20">
               <Link 
                 to="/upload" 
-                className="inline-flex items-center justify-center primary-button font-bold px-4 py-5 md:px-12 md:py-5 button-hover animate-fade-in-delay-2"
+                className="inline-flex items-center justify-center primary-button font-bold px-4 py-5 md:px-12 md:py-5 button-hover animate-fade-in-delay-2 w-[250px] sm:w-auto mx-auto sm:mx-0"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -243,7 +276,7 @@ export default function Home() {
               </Link>
               <button 
                 onClick={fetchResumes}
-                className="inline-flex items-center justify-center white-button font-bold px-4 py-5 md:px-18 md:py-5 button-hover animate-fade-in-delay-2"
+                className="inline-flex items-center justify-center white-button font-bold px-4 py-5 md:px-18 md:py-5 button-hover animate-fade-in-delay-2 w-[250px] sm:w-auto mx-auto sm:mx-0"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
